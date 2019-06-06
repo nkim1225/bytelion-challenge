@@ -1,0 +1,14 @@
+<div class="form">
+<h2>Edit Backscratcher</h2>
+  <%= form_for @backscratcher do |f| %>
+    <%= f.label :item_name %>
+    <%= f.text_field :item_name %>
+    <%= f.label :item_description %>
+    <%= f.text_area :item_description, size: "60x12" %>
+    <%= f.label :item_size %>
+    <%= f.text_field :item_size %>
+    <%= f.label :item_cost %>
+    <%= f.text_field :item_cost %>
+    <%= f.submit "Update" %>
+  <% end %>
+</div>

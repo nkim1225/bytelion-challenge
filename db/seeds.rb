@@ -6,7 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Backscratcher.destroy_all
+User.destroy_all
 
+User.create(email:"admin@admin.com", password: "password", password_confirmation: "password", role: "admin")
 Backscratcher.create(item_name: "itcher", item_description: "number one backscratcher", item_size: "XL", item_cost: "$14.00")
 Backscratcher.create(item_name: "the itcher", item_description: "number two backscratcher", item_size: "L", item_cost: "$8.00")
 Backscratcher.create(item_name: "the itcher 3", item_description: "number three backscratcher", item_size: "XS", item_cost: "$4.00")

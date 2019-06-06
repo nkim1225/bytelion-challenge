@@ -1,4 +1,18 @@
-<p>
-  Modify me in `app/views/homes/index.html.erb` or change the root directive in
-  `config/routes.rb`
-</p>
+
+<div class="list">
+  <h1 class="list-title">Backscratchers List</h1>
+  <dd>
+  <% @scratchers.each do |s| %>
+    <dl>
+      PID: <%= s.id %><br>
+      Name: <%= s.item_name %><br>
+      Description: <%= s.item_description %><br>
+      Size: <%= s.item_size %><br>
+      Cost: <%= s.item_cost %><br>
+      <% if current_user != nil && current_user.admin? %>
+      <%= link_to 'Edit', edit_backscratcher_path(s) %>
+      <% end %>
+    </dl>
+  <% end %>
+  </dd>
+</div>
