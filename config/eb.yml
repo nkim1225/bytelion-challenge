@@ -1,0 +1,15 @@
+app: bytelion-challenge
+region: us-east-1
+solution_stack_name: 64bit Amazon Linux 2015.03 v2.0.0 running Ruby 2.2 (Passenger Standalone)
+strategy: inplace-update
+keep_latest: 10
+development:
+  options:
+    aws:autoscaling:launchconfiguration:
+      InstanceType: t1.micro
+
+production:
+  strategy: blue-green
+  options:
+    aws:autoscaling:launchconfiguration:
+      InstanceType: t1.small

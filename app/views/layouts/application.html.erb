@@ -21,9 +21,10 @@
     <section class="top-bar-section">
       <ul class="right">
         <%- if current_user -%>
+          <li><%= link_to 'Add Backscratcher', new_backscratcher_path %></li>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+<!--          <li><%#= link_to 'Sign Up', new_user_registration_path %></li>-->
           <li><%= link_to 'Sign In', new_user_session_path %></li>
         <%- end -%>
       </ul>
@@ -32,11 +33,24 @@
 
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">
-      <%= value %>
+      <% if value.class == Array %>
+        <% value.each do |v| %>
+          <li><%= v %></li>
+        <% end %>
+      <% else %>
+        <%= value %>
+      <% end %>
     </div>
   <%- end -%>
 
   <%= yield %>
+  <%= javascript_include_tag 'application' %>
+  <%- if Rails.env.development? || Rails.env.test? -%>
+  <%= javascript_tag do %>
+    window.railsEnv = '<%= Rails.env %>'
+  <%- end -%>
+<%- end -%>
+<%= javascript_pack_tag 'application' %>
   
   <%= yield :extra_footer %>
 </body>

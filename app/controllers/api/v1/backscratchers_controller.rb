@@ -9,7 +9,6 @@ class Api::V1::BackscratchersController < ApplicationController
     new_scratcher = Backscratcher.new(item_name: params[:item_name], item_description: params[:item_description],
                                       item_size: params[:item_size], item_cost: params[:item_cost])
     if new_scratcher.save
-      binding.pry
       render json: new_scratcher
     else
       render json: {errors: new_scratcher.errors.full_messages}
